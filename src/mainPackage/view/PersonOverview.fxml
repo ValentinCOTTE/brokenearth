@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.view.PersonOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="personTable" layoutX="-25.0" layoutY="57.0" prefHeight="398.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="174.0" text="Personnage" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane gridLinesVisible="true" layoutY="2.0" prefHeight="259.0" prefWidth="417.0" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="forceLabel" contentDisplay="CENTER" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="enduranceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="dexteriteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="agiliteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="perceptionLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="intelligenceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="charismeLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="chanceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Button fx:id="modForceButton" mnemonicParsing="false" onAction="#handleForce" prefWidth="90.0" text="Force" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modEnduranceButton" mnemonicParsing="false" onAction="#handleEndurance" prefWidth="90.0" text="Endurance" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modDexteriteButton" mnemonicParsing="false" onAction="#handleDexterite" prefWidth="90.0" text="Dextérité" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modAgiliteButton" mnemonicParsing="false" onAction="#handleAgilite" prefWidth="90.0" text="Agilité" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modPerceptionButton" mnemonicParsing="false" onAction="#handlePerception" prefWidth="90.0" text="Perception" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modIntelligenceButton" mnemonicParsing="false" onAction="#handleIntelligence" prefWidth="90.0" text="Intelligence" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modCharismeButton" mnemonicParsing="false" onAction="#handleCharisme" prefWidth="90.0" text="Charisme" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modChanceButton" mnemonicParsing="false" onAction="#handleChance" prefWidth="90.0" text="Chance" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="bonusForceButton" mnemonicParsing="false" onAction="#handleForceBonus" text="Bonus" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusEnduranceButton" mnemonicParsing="false" onAction="#handleEnduranceBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusDexteriteButton" mnemonicParsing="false" onAction="#handleDexteriteBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusAgiliteButton" mnemonicParsing="false" onAction="#handleAgiliteBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusPerceptionButton" mnemonicParsing="false" onAction="#handlePerceptionBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusIntelligenceButton" mnemonicParsing="false" onAction="#handleIntelligenceBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusCharismeButton" mnemonicParsing="false" onAction="#handleCharismeBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="bonusChanceButton" mnemonicParsing="false" onAction="#handleChanceBonus" text="Bonus" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Label fx:id="modForceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="modEnduranceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="modDexteriteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="modAgiliteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label fx:id="modPerceptionLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label fx:id="modIntelligenceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                        <Label fx:id="modCharismeLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label fx:id="modChanceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                        <Label fx:id="bonusForceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusEnduranceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusDexteriteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusAgiliteLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusPerceptionLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusIntelligenceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusCharismeLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="bonusChanceLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <ButtonBar layoutX="203.0" layoutY="344.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <buttons>
+                      <Button mnemonicParsing="false" onAction="#handleNewPerson" text="New..." />
+                        <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit..." />
+                        <Button mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
+                    </buttons>
+                  </ButtonBar>
+                  <Pane layoutX="217.0" layoutY="256.0" prefHeight="102.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label layoutX="179.0" layoutY="28.0" text="\%">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="scoreTF" alignment="CENTER_RIGHT" layoutX="115.0" layoutY="22.0" prefHeight="25.0" prefWidth="64.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="147.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleReset" text="Reset" />
+                        <Button layoutX="52.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleRoll" text="Roll" />
+                        <Label layoutX="95.0" layoutY="24.0" text="/">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rollLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="24.0" text="Label" textAlignment="RIGHT">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="129.0" layoutY="6.0" text="TOTAL" textAlignment="CENTER" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="-12.0" layoutY="296.0" prefHeight="102.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0">
+                     <children>
+                        <ButtonBar buttonMinWidth="50.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#handlePlus1" text="+1%" />
+                              <Button mnemonicParsing="false" onAction="#handlePlus5" text="+5%" />
+                              <Button mnemonicParsing="false" onAction="#handlePlus10" text="+10%" />
+                          </buttons>
+                        </ButtonBar>
+                        <ButtonBar buttonMinWidth="50.0" layoutY="62.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#handleMinus1" text="-1%" />
+                              <Button mnemonicParsing="false" onAction="#handleMinus5" text="-5%" />
+                              <Button mnemonicParsing="false" onAction="#handleMinus10" text="-10%" />
+                          </buttons>
+                        </ButtonBar>
+                        <Label fx:id="bonusLabel" layoutX="72.0" layoutY="43.0" text="Label" />
+                        <Label layoutX="30.0" layoutY="43.0" text="Bonus : " textAlignment="CENTER" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
