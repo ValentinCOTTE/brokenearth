@@ -1,11 +1,17 @@
 package mainPackage.model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Person {
+public class Person{
 	private final StringProperty name;
 	private final IntegerProperty force;
 	private final IntegerProperty endurance;
@@ -42,7 +48,8 @@ public class Person {
         this.charisme = new SimpleIntegerProperty(5);
         this.chance = new SimpleIntegerProperty(5);
     }
-
+    
+    
     public StringProperty getNameProperty() {
 		return name;
     	

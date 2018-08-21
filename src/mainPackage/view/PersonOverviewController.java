@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -394,138 +395,142 @@ public class PersonOverviewController {
     	
     	Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
     	
-    	//update nbStat
-    	nbStat=0;
-    	if(modForceButton.isDisable()) nbStat++;
-    	if(modEnduranceButton.isDisable()) nbStat++;
-    	if(modDexteriteButton.isDisable()) nbStat++;
-    	if(modAgiliteButton.isDisable()) nbStat++;
-    	if(modPerceptionButton.isDisable()) nbStat++;
-    	if(modIntelligenceButton.isDisable()) nbStat++;
-    	if(modCharismeButton.isDisable()) nbStat++;
-    	if(modChanceButton.isDisable()) nbStat++;
+    	double mod_score=0;
+    	double bonus_score=0;
     	
-    	//update modifier
-    	if(modForceButton.isDisable()) forceMod = (double) (selectedPerson.getForce()*10) / (double) nbStat;
-    	if(modEnduranceButton.isDisable()) enduranceMod = (double) (selectedPerson.getEndurance()*10) / (double) nbStat;
-    	if(modDexteriteButton.isDisable()) dexteriteMod = (double) (selectedPerson.getDexterite()*10) / (double) nbStat;
-    	if(modAgiliteButton.isDisable()) agiliteMod = (double) (selectedPerson.getAgilite()*10) / (double) nbStat;
-    	if(modPerceptionButton.isDisable()) perceptionMod = (double) (selectedPerson.getPerception()*10) / (double) nbStat;
-    	if(modIntelligenceButton.isDisable()) intelligenceMod = (double) (selectedPerson.getIntelligence()*10) / (double) nbStat;
-    	if(modCharismeButton.isDisable()) charismeMod = (double) (selectedPerson.getCharisme()*10) / (double) nbStat;
-    	if(modChanceButton.isDisable()) chanceMod = (double) (selectedPerson.getChance()*10) / (double) nbStat;
-    	
-    	double mod_score=forceMod
-    			+ enduranceMod
-    			+ dexteriteMod
-    			+ agiliteMod
-    			+ perceptionMod
-    			+ intelligenceMod
-    			+ charismeMod
-    			+ chanceMod;
-    	
-    	//bonus updating
-    	
-    	//if bonus stat is equal or superior than mod_score, the 10% bonus is according
-    	//this bonus is 20% if the bonus stat is 3 times superior (initiate bonus) or 30% if the bonus time is 6 times superior (expert bonus)
-    	//there is a -1 mercy margin
-    	
-    	if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score*6 - 1) forceBonus = 30;
-		else if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score*3 - 1) forceBonus = 20;
-		else if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score - 1) forceBonus = 10;
-		else forceBonus = 0;
-		
-		if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score*6- 1) enduranceBonus = 30;
-		else if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score*3- 1) enduranceBonus = 20;
-		else if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score- 1) enduranceBonus = 10;
-		else enduranceBonus = 0;
-		
-		if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score*6 - 1) dexteriteBonus = 30;
-		else if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score*3 - 1) dexteriteBonus = 20;
-		else if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score - 1) dexteriteBonus = 10;
-		else dexteriteBonus = 0;
-		
-		if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score*6 - 1) agiliteBonus = 30;
-		else if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score*3 - 1) agiliteBonus = 20;
-		else if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score - 1) agiliteBonus = 10;
-		else agiliteBonus = 0;
-		
-		if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score*6 - 1) perceptionBonus = 30;
-		else if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score*3 - 1) perceptionBonus = 20;
-		else if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score - 1) perceptionBonus = 10;
-		else perceptionBonus = 0;
-		
-		if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score*6 - 1) intelligenceBonus = 30;
-		else if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score*3 - 1) intelligenceBonus = 20;
-		else if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score - 1) intelligenceBonus = 10;
-		else intelligenceBonus = 0;
-		
-		if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score*6 - 1) charismeBonus = 30;
-		else if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score*3 - 1) charismeBonus = 20;
-		else if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score - 1) charismeBonus = 10;
-		else charismeBonus = 0;
-		
-		if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score*6 - 1) chanceBonus = 30;
-		else if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score*3 - 1) chanceBonus = 20;
-		else if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score - 1) chanceBonus = 10;
-		else chanceBonus = 0;
-    	
-    	
-    	
-    	
-    	//update labels
-    	if(modForceButton.isDisable()) modForceLabel.setText(Integer.toString((int) forceMod) + "%");
-    		else modForceLabel.setText("");
-    	if(modEnduranceButton.isDisable()) modEnduranceLabel.setText(Integer.toString((int) enduranceMod) + "%");
-    		else modEnduranceLabel.setText("");
-    	if(modDexteriteButton.isDisable()) modDexteriteLabel.setText(Integer.toString((int) dexteriteMod) + "%");
-    		else modDexteriteLabel.setText("");
-    	if(modAgiliteButton.isDisable()) modAgiliteLabel.setText(Integer.toString((int) agiliteMod) + "%");
-    		else modAgiliteLabel.setText("");
-    	if(modPerceptionButton.isDisable()) modPerceptionLabel.setText(Integer.toString((int) perceptionMod) + "%");
-    		else modPerceptionLabel.setText("");
-    	if(modIntelligenceButton.isDisable()) modIntelligenceLabel.setText(Integer.toString((int) intelligenceMod) + "%");
-    		else modIntelligenceLabel.setText("");
-    	if(modCharismeButton.isDisable()) modCharismeLabel.setText(Integer.toString((int) charismeMod) + "%");
-    		else modCharismeLabel.setText("");
-    	if(modChanceButton.isDisable()) modChanceLabel.setText(Integer.toString((int) chanceMod) + "%");
-    		else modChanceLabel.setText("");
-        
-    	
+    	if(selectedPerson!=null) {
+    		//update nbStat
+        	nbStat=0;
+        	if(modForceButton.isDisable()) nbStat++;
+        	if(modEnduranceButton.isDisable()) nbStat++;
+        	if(modDexteriteButton.isDisable()) nbStat++;
+        	if(modAgiliteButton.isDisable()) nbStat++;
+        	if(modPerceptionButton.isDisable()) nbStat++;
+        	if(modIntelligenceButton.isDisable()) nbStat++;
+        	if(modCharismeButton.isDisable()) nbStat++;
+        	if(modChanceButton.isDisable()) nbStat++;
+        	
+        	//update modifier
+        	if(modForceButton.isDisable()) forceMod = (double) (selectedPerson.getForce()*10) / (double) nbStat;
+            if(modEnduranceButton.isDisable()) enduranceMod = (double) (selectedPerson.getEndurance()*10) / (double) nbStat;
+            if(modDexteriteButton.isDisable()) dexteriteMod = (double) (selectedPerson.getDexterite()*10) / (double) nbStat;
+            if(modAgiliteButton.isDisable()) agiliteMod = (double) (selectedPerson.getAgilite()*10) / (double) nbStat;
+            if(modPerceptionButton.isDisable()) perceptionMod = (double) (selectedPerson.getPerception()*10) / (double) nbStat;
+            if(modIntelligenceButton.isDisable()) intelligenceMod = (double) (selectedPerson.getIntelligence()*10) / (double) nbStat;
+            if(modCharismeButton.isDisable()) charismeMod = (double) (selectedPerson.getCharisme()*10) / (double) nbStat;
+            if(modChanceButton.isDisable()) chanceMod = (double) (selectedPerson.getChance()*10) / (double) nbStat;
+            	
+        	
+        	mod_score=forceMod
+        			+ enduranceMod
+        			+ dexteriteMod
+        			+ agiliteMod
+        			+ perceptionMod
+        			+ intelligenceMod
+        			+ charismeMod
+        			+ chanceMod;
+        	
+        	//bonus updating
+        	
+        	//if bonus stat is equal or superior than mod_score, the 10% bonus is according
+        	//this bonus is 20% if the bonus stat is 3 times superior (initiate bonus) or 30% if the bonus time is 6 times superior (expert bonus)
+        	//there is a -1 mercy margin
+        	
+        	if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score*6 - 1) forceBonus = 30;
+    		else if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score*3 - 1) forceBonus = 20;
+    		else if(bonusForceButton.isDisable() && selectedPerson.getForce()*10 >= mod_score - 1) forceBonus = 10;
+    		else forceBonus = 0;
+    		
+    		if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score*6- 1) enduranceBonus = 30;
+    		else if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score*3- 1) enduranceBonus = 20;
+    		else if(bonusEnduranceButton.isDisable() && selectedPerson.getEndurance()*10 >= mod_score- 1) enduranceBonus = 10;
+    		else enduranceBonus = 0;
+    		
+    		if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score*6 - 1) dexteriteBonus = 30;
+    		else if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score*3 - 1) dexteriteBonus = 20;
+    		else if(bonusDexteriteButton.isDisable() && selectedPerson.getDexterite()*10 >= mod_score - 1) dexteriteBonus = 10;
+    		else dexteriteBonus = 0;
+    		
+    		if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score*6 - 1) agiliteBonus = 30;
+    		else if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score*3 - 1) agiliteBonus = 20;
+    		else if(bonusAgiliteButton.isDisable() && selectedPerson.getAgilite()*10 >= mod_score - 1) agiliteBonus = 10;
+    		else agiliteBonus = 0;
+    		
+    		if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score*6 - 1) perceptionBonus = 30;
+    		else if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score*3 - 1) perceptionBonus = 20;
+    		else if(bonusPerceptionButton.isDisable() && selectedPerson.getPerception()*10 >= mod_score - 1) perceptionBonus = 10;
+    		else perceptionBonus = 0;
+    		
+    		if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score*6 - 1) intelligenceBonus = 30;
+    		else if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score*3 - 1) intelligenceBonus = 20;
+    		else if(bonusIntelligenceButton.isDisable() && selectedPerson.getIntelligence()*10 >= mod_score - 1) intelligenceBonus = 10;
+    		else intelligenceBonus = 0;
+    		
+    		if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score*6 - 1) charismeBonus = 30;
+    		else if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score*3 - 1) charismeBonus = 20;
+    		else if(bonusCharismeButton.isDisable() && selectedPerson.getCharisme()*10 >= mod_score - 1) charismeBonus = 10;
+    		else charismeBonus = 0;
+    		
+    		if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score*6 - 1) chanceBonus = 30;
+    		else if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score*3 - 1) chanceBonus = 20;
+    		else if(bonusChanceButton.isDisable() && selectedPerson.getChance()*10 >= mod_score - 1) chanceBonus = 10;
+    		else chanceBonus = 0;
+        	
+        	
+        	
+        	
+        	//update labels
+        	if(modForceButton.isDisable()) modForceLabel.setText(Integer.toString((int) forceMod) + "%");
+        		else modForceLabel.setText("");
+        	if(modEnduranceButton.isDisable()) modEnduranceLabel.setText(Integer.toString((int) enduranceMod) + "%");
+        		else modEnduranceLabel.setText("");
+        	if(modDexteriteButton.isDisable()) modDexteriteLabel.setText(Integer.toString((int) dexteriteMod) + "%");
+        		else modDexteriteLabel.setText("");
+        	if(modAgiliteButton.isDisable()) modAgiliteLabel.setText(Integer.toString((int) agiliteMod) + "%");
+        		else modAgiliteLabel.setText("");
+        	if(modPerceptionButton.isDisable()) modPerceptionLabel.setText(Integer.toString((int) perceptionMod) + "%");
+        		else modPerceptionLabel.setText("");
+        	if(modIntelligenceButton.isDisable()) modIntelligenceLabel.setText(Integer.toString((int) intelligenceMod) + "%");
+        		else modIntelligenceLabel.setText("");
+        	if(modCharismeButton.isDisable()) modCharismeLabel.setText(Integer.toString((int) charismeMod) + "%");
+        		else modCharismeLabel.setText("");
+        	if(modChanceButton.isDisable()) modChanceLabel.setText(Integer.toString((int) chanceMod) + "%");
+        		else modChanceLabel.setText("");
+            
+        	
 
-    	if(bonusForceButton.isDisable()) bonusForceLabel.setText("+" + Integer.toString((int) forceBonus) + "%");
-    		else bonusForceLabel.setText("");
-    	if(bonusEnduranceButton.isDisable()) bonusEnduranceLabel.setText("+" + Integer.toString((int) enduranceBonus) + "%");
-			else bonusEnduranceLabel.setText("");
-    	if(bonusDexteriteButton.isDisable()) bonusDexteriteLabel.setText("+" + Integer.toString((int) dexteriteBonus) + "%");
-			else bonusDexteriteLabel.setText("");
-    	if(bonusAgiliteButton.isDisable()) bonusAgiliteLabel.setText("+" + Integer.toString((int) agiliteBonus) + "%");
-			else bonusAgiliteLabel.setText("");
-    	if(bonusPerceptionButton.isDisable()) bonusPerceptionLabel.setText("+" + Integer.toString((int) perceptionBonus) + "%");
-			else bonusPerceptionLabel.setText("");
-    	if(bonusIntelligenceButton.isDisable()) bonusIntelligenceLabel.setText("+" + Integer.toString((int) intelligenceBonus) + "%");
-			else bonusIntelligenceLabel.setText("");
-    	if(bonusCharismeButton.isDisable()) bonusCharismeLabel.setText("+" + Integer.toString((int) charismeBonus) + "%");
-			else bonusCharismeLabel.setText("");
-    	if(bonusChanceButton.isDisable()) bonusChanceLabel.setText("+" + Integer.toString((int) chanceBonus) + "%");
-			else bonusChanceLabel.setText("");
+        	if(bonusForceButton.isDisable()) bonusForceLabel.setText("+" + Integer.toString((int) forceBonus) + "%");
+        		else bonusForceLabel.setText("");
+        	if(bonusEnduranceButton.isDisable()) bonusEnduranceLabel.setText("+" + Integer.toString((int) enduranceBonus) + "%");
+    			else bonusEnduranceLabel.setText("");
+        	if(bonusDexteriteButton.isDisable()) bonusDexteriteLabel.setText("+" + Integer.toString((int) dexteriteBonus) + "%");
+    			else bonusDexteriteLabel.setText("");
+        	if(bonusAgiliteButton.isDisable()) bonusAgiliteLabel.setText("+" + Integer.toString((int) agiliteBonus) + "%");
+    			else bonusAgiliteLabel.setText("");
+        	if(bonusPerceptionButton.isDisable()) bonusPerceptionLabel.setText("+" + Integer.toString((int) perceptionBonus) + "%");
+    			else bonusPerceptionLabel.setText("");
+        	if(bonusIntelligenceButton.isDisable()) bonusIntelligenceLabel.setText("+" + Integer.toString((int) intelligenceBonus) + "%");
+    			else bonusIntelligenceLabel.setText("");
+        	if(bonusCharismeButton.isDisable()) bonusCharismeLabel.setText("+" + Integer.toString((int) charismeBonus) + "%");
+    			else bonusCharismeLabel.setText("");
+        	if(bonusChanceButton.isDisable()) bonusChanceLabel.setText("+" + Integer.toString((int) chanceBonus) + "%");
+    			else bonusChanceLabel.setText("");
+        	
+        	bonus_score= forceBonus
+        			+ enduranceBonus
+        			+ dexteriteBonus
+        			+ agiliteBonus
+        			+ perceptionBonus
+        			+ intelligenceBonus
+        			+ charismeBonus
+        			+ chanceBonus;
+    	}    	
     	
-
     	
     	bonusLabel.setText(Integer.toString((int) bonus) + "%");
     	
     	
-    	double bonus_score= forceBonus
-    			+ enduranceBonus
-    			+ dexteriteBonus
-    			+ agiliteBonus
-    			+ perceptionBonus
-    			+ intelligenceBonus
-    			+ charismeBonus
-    			+ chanceBonus
-    			+ bonus;
-    	
-    	double score = mod_score + bonus_score;
+    	double score = mod_score + bonus_score + bonus;
     	
     	scoreTF.setText(Integer.toString((int) score));
     }

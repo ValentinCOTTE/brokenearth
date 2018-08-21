@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -69,6 +70,7 @@ public class App extends Application {
         personData.add(new Person("Anna"));
         personData.add(new Person("Stefan"));
         personData.add(new Person("Martin"));
+
     }
     
     /**
@@ -83,6 +85,10 @@ public class App extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("BrokenEarth");
+        
+        //Set the icon of the application
+        this.primaryStage.getIcons().add(new Image("file:res/images/Sans.jpg"));
+
         
         initRootLayout();
         
@@ -148,6 +154,9 @@ public class App extends Application {
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Person");
+            //set icon
+            dialogStage.getIcons().add(new Image("file:res/images/Sans.jpg"));
+         
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
